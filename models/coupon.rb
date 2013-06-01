@@ -14,7 +14,7 @@ class Coupon < ActiveRecord::Base
     pp photo
     file_name = photo['thumbUrl'].split('/').last
     puts file_name
-    thumb_url = "http://cdn.eyeem.com/thumb/w/384/#{file_name}"
+    thumb_url = "http://cdn.eyeem.com/thumb/256/256/#{file_name}"
     puts thumb_url
     #tmp_path = "#{settings.root}/tmp"
     uri = URI.parse(thumb_url)
@@ -32,7 +32,7 @@ class Coupon < ActiveRecord::Base
     end
     path = File.join(Coupon.tmp_path,"#{file_name}.jpg")
     converted_path = File.join(Coupon.tmp_path,"#{file_name}.bmp")
-    `convert -colorspace Gray -ordered-dither o2x2 #{path} #{converted_path}`
+    `convert -colorspace Gray -ordered-dither o2x2 -brightness-contrast 25 #{path} #{converted_path}`
     img = ImageList.new("#{converted_path}")[0]
     bits = []
     white = 65535

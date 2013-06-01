@@ -36,7 +36,7 @@ namespace :coupon_shooter do
           printer.set_size(:small)
           printer.double_width_off
           printer.println("(#{coupon.coupon_provider.url})")
-          printer.feed(2)
+          printer.feed
           printer.set_size(:medium)
           printer.println(coupon.coupon_type)
           printer.println('with the code')
@@ -45,9 +45,10 @@ namespace :coupon_shooter do
           printer.println(coupon.code)
           printer.double_width_off
           printer.bold_off
-          printer.justify(:left)
+          width, height, image = coupon.convert_photo
+          printer.print_bitmap(width, height, image)
+          printer.println(@last_photo['caption'])
           printer.println("created for @#{coupon.username}")
-          printer.feed(2)
           printer.set_size(:small)
           printer.println("powered by CouponShooter")
           #printer.println("received for @#{coupon.username}")
