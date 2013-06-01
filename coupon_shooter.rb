@@ -7,7 +7,7 @@ require 'pry-remote'
 require 'EyeEmConnector'
 require 'a2_printer'
 require 'pp'
-require "RMagick"
+require "rmagick"
 include Magick
 
 require './models/coupon'

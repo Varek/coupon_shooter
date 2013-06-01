@@ -64,6 +64,7 @@ GEM
     rake (10.0.4)
     rash (0.4.0)
       hashie (~> 2.0.0)
+    rmagick (2.13.1)
     serialport (1.0.4)
     sinatra (1.4.2)
       rack (~> 1.5, >= 1.5.2)
@@ -98,9 +99,11 @@ DEPENDENCIES
   EyeEmConnector
   a2_printer
   activerecord
+  activesupport
   haml
   pry-remote
   rake
+  rmagick
   sinatra
   sinatra-activerecord
   sinatra-contrib (~> 1.4.0)

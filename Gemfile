@@ -6,6 +6,7 @@ gem 'sinatra-contrib', "~> 1.4.0"
 gem "rake"
 gem 'activerecord'
 gem 'sinatra-activerecord' # excellent gem that ports ActiveRecord for Sinatra
+gem "activesupport", :require => "active_support"
 gem "sqlite3"
 
 gem 'thin'
@@ -19,3 +20,4 @@ gem 'a2_printer'
 gem 'haml'
 
 gem 'whenever', :require => false
+gem 'rmagick', :require => false

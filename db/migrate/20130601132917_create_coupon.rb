@@ -8,6 +8,7 @@ class CreateCoupon < ActiveRecord::Migration
       t.integer :user_id
       t.string :username
       t.boolean :printed
+      t.datetime :updated
     end
   end
 
