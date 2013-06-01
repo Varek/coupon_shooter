@@ -30,12 +30,13 @@ namespace :coupon_shooter do
           printer.justify(:center)
           printer.double_width_on
           printer.set_size(:large)
+          printer.set_line_height(20)
           printer.println(coupon.coupon_provider.name)
           printer.set_size(:medium)
           printer.double_width_off
-          printer.set_line_height(20)
           printer.println("#{coupon.coupon_provider.url}")
           printer.feed(2)
+          printer.set_line_height
           printer.println(coupon.coupon_type)
           printer.println("for @#{coupon.username}")
           printer.double_width_on
@@ -49,6 +50,7 @@ namespace :coupon_shooter do
           #printer.println(@last_photo['caption'])
           #printer.println("created for )
           #printer.set_size(:small)
+          printer.feed
           printer.println("powered by CouponShooter")
           #printer.println("received for @#{coupon.username}")
           #printer.double_width_on
