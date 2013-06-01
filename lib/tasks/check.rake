@@ -27,12 +27,11 @@ namespace :coupon_shooter do
         begin
           sc = SerialConnection.new('/dev/ttyAMA0')
           printer = A2Printer.new(sc)
-          coupon = Coupon.where(:printed => nil)
 
           printer.begin(200)
           printer.feed(3)
           printer.bold_on
-          printer.justify(1)
+          printer.justify(:center)
           printer.double_width_on
           printer.set_size(:large)
           printer.println("Voucher")
@@ -50,7 +49,7 @@ namespace :coupon_shooter do
           printer.println(coupon.code)
           printer.double_width_off
           printer.bold_off
-          printer.justify(0)
+          printer.justify(:left)
           printer.println("created for @#{coupon.username}")
           printer.feed(2)
           printer.set_size(:small)
