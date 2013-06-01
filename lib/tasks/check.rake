@@ -2,10 +2,6 @@ namespace :coupon_shooter do
 
   desc "fetch data from authenticated services and write them to evernote"
   task :check_and_print do
-    @eye_em = EyeEmConnector.configure do |config|
-      config.client_id = ENV['EYEEM_KEY']
-      config.client_secret = ENV['EYEEM_SECRET']
-    end
 
     #puts ENV['EYEEM_KEY']
     @last_updated = EyeEmConnector.album(5407238)['album']['updated']

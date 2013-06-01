@@ -7,11 +7,20 @@ require 'pry-remote'
 require 'EyeEmConnector'
 require 'a2_printer'
 require 'pp'
+require "RMagick"
+include Magick
 
 require './models/coupon'
 require './models/coupon_provider'
 require './config/environments'
 
+EyeEmConnector.configure do |config|
+  config.client_id = ENV['EYEEM_KEY']
+  config.client_secret = ENV['EYEEM_SECRET']
+end
+
+set :public_folder, Proc.new { File.join(root, "tmp") }
+Coupon.tmp_path = settings.public_folder
 
 get '/coupons' do
   @coupons = Coupon.all
