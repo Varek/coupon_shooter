@@ -39,7 +39,7 @@ class Coupon < ActiveRecord::Base
     limit = white / 2
     img.each_pixel { |pixel, _, _| bits << ((pixel.intensity < limit) ? 1 : 0) }
     bytes = []
-    bits.each_slice(8) { |s| bytes << "0x"+ ("0" + s.join).to_i(2).to_s(16).rjust(2, "0") }
+    bits.each_slice(8) { |s| bytes << ("0" + s.join).to_i(2)}
     width = img.columns
     height = img.rows
 
