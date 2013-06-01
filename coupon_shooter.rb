@@ -9,10 +9,12 @@ require 'a2_printer'
 require 'pp'
 
 require './models/coupon'
+require './models/coupon_provider'
 require './config/environments'
 
 
 get '/coupons' do
+  @coupons = Coupon.all
   haml :coupons
 end
 
