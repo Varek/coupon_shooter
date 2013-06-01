@@ -34,14 +34,14 @@ namespace :coupon_shooter do
           printer.justify(:center)
           printer.double_width_on
           printer.set_size(:large)
-          printer.println("Voucher")
+          printer.println("Coupon")
           printer.println("for")
           printer.println(coupon.coupon_provider.name)
           printer.set_size(:small)
           printer.double_width_off
           printer.println("(#{coupon.coupon_provider.url})")
           printer.feed(2)
-          printer.set_size(:normal)
+          printer.set_size(:medium)
           printer.println(coupon.coupon_type)
           printer.println('with the code')
           printer.double_width_on
