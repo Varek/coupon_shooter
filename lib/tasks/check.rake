@@ -18,7 +18,7 @@ namespace :coupon_shooter do
         puts "album updated: #{@last_updated}"
         @last_updated = updated
         @last_photo = EyeEmConnector.album_photos(5407238, detailed: true)['photos']['items'].first
-        coupon = Coupon.where('printed IS NOT TRUE').first
+        coupon = Coupon.where(:printed  => nil).first
         pp @last_photo
         coupon.username = @last_photo['user']['nickname']
         coupon.user_id = @last_photo['user']['id']
