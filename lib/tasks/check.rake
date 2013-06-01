@@ -20,7 +20,7 @@ namespace :coupon_shooter do
         @last_photo = EyeEmConnector.album_photos(5407238, detailed: true)['photos']['items'].first
         coupon = Coupon.where('printed IS NOT TRUE')
         pp @last_photo
-        coupon.username = @last_photo['user']['nickname']
+        coupon.user_name = @last_photo['user']['nickname']
         coupon.user_id = @last_photo['user']['id']
         coupon.photo_id = @last_photo['id']
         coupon.save
@@ -51,7 +51,7 @@ namespace :coupon_shooter do
           printer.double_width_off
           printer.bold_off
           printer.justify(0)
-          printer.println("created for @#{coupon.username}")
+          printer.println("created for @#{coupon.user_name}")
           printer.feed(2)
           printer.set_size(:small)
           printer.println("powered by CouponShooter")
