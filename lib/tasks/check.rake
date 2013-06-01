@@ -17,11 +17,11 @@ namespace :coupon_shooter do
       if updated > @last_updated
         puts "album updated: #{@last_updated}"
         @last_updated = updated
-        @last_photo = EyeEmConnector.album_photos(5407238)['photos']['items'].first
+        @last_photo = EyeEmConnector.album_photos(5407238, detailed: true)['photos']['items'].first
         pp @last_photo
 
         begin
-          c = SerialConnection.new('/dev/ttyAMA0')
+          sc = SerialConnection.new('/dev/ttyAMA0')
           printer = A2Printer.new(sc)
 
           printer.begin(200)
@@ -35,12 +35,11 @@ namespace :coupon_shooter do
         rescue
           puts 'no printer attached'
         ensure
-          file.close unless file.nil?
         end
       else
         puts 'nothing new'
       end
-      sleep 10
+      sleep 5
     end while true
   end
 end
