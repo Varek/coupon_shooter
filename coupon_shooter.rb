@@ -6,6 +6,7 @@ require 'active_support/all'
 require 'pry-remote'
 require 'EyeEmConnector'
 require 'a2_printer'
+require 'pp'
 
 require './models/coupon'
 require './config/environments'
