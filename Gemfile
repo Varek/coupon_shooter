@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'sinatra-contrib', git: 'https://github.com/sinatra/sinatra-contrib.git'
+gem 'sinatra-contrib', "~> 1.4.0"
 
 gem "rake"
 gem 'activerecord'
