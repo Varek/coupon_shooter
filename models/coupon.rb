@@ -32,7 +32,7 @@ class Coupon < ActiveRecord::Base
     end
     path = File.join(Coupon.tmp_path,"#{file_name}.jpg")
     converted_path = File.join(Coupon.tmp_path,"#{file_name}.bmp")
-    `convert -colorspace Gray -ordered-dither o2x2 -brightness-contrast 25 #{path} #{converted_path}`
+    `convert -colorspace Gray -ordered-dither o2x2 #{path} #{converted_path}`
     img = ImageList.new("#{converted_path}")[0]
     bits = []
     white = 65535
