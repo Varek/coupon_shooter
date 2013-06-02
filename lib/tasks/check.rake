@@ -6,7 +6,7 @@ namespace :coupon_shooter do
     #puts ENV['EYEEM_KEY']
     #@last_updated = EyeEmConnector.album(5407238)['album']['updated']
     aps = EyeEmConnector.album_photos(5407238,detailed: true)
-    @last_photo = aps['photos']['items'].last
+    @last_photo = aps['photos']['items'].first
     @photo_count = aps['photos']['total'].to_i
 
     begin
