@@ -2,7 +2,6 @@ require 'rubygems'
 require 'sinatra'
 require "sinatra/reloader" if development?
 require 'sinatra/activerecord'
-require 'sinatra/partial'
 require 'active_support/all'
 require 'pry-remote'
 require 'EyeEmConnector'
