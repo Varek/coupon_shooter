@@ -64,6 +64,7 @@ namespace :coupon_shooter do
           printer.justify(:center)
           printer.println("for @#{photo['user']['nickname']}")
           printer.feed(5)
+          @last_photo = photo
         rescue
           puts 'no printer attached'
         ensure
@@ -102,6 +103,7 @@ namespace :coupon_shooter do
           printer.justify(:center)
           printer.println("for @#{photo['user']['nickname']}")
           printer.feed(5)
+          @last_photo = photo
         rescue
           puts 'no printer attached'
         ensure
