@@ -4,13 +4,33 @@ class Coupon < ActiveRecord::Base
 
   def self.tmp_path=(path)
       @tmp_path = path
-    end
-    def self.tmp_path
-      @tmp_path
-    end
+  end
+  def self.tmp_path
+    @tmp_path
+  end
+
+  def photo
+    EyeEmConnector.photo(self.photo_id)['photo']
+  end
+
+  def bigger_photo_url
+    url_split = photo['photoUrl'].split('/')
+    url_split[4] = 'w'
+    url_split[5] = '600'
+    url_split.join('/')
+  end
+
+  def print_photo
+    sc = SerialConnection.new('/dev/ttyAMA0')
+    printer = A2Printer.new(sc)
+    width, height, image = self.convert_photo
+    printer.begin(200)
+    printer.feed(2)
+    printer.print_bitmap(width, height, image)
+    printer.feed(2)
+  end
 
   def convert_photo
-    photo = EyeEmConnector.photo(self.photo_id)['photo']
     pp photo
     file_name = photo['thumbUrl'].split('/').last
     puts file_name

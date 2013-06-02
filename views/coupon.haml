@@ -1,0 +1,17 @@
+.row
+  .large-8.columns.large-offset-2
+    .panel
+      - if @coupon.photo_id.present?
+        %span
+          %h4{style: 'display:inline'}
+            = "#{@coupon.coupon_provider.name}: "
+            = @coupon.coupon_type
+          for
+          %a{href:"http://www.eyeem.com/u/#{@coupon.username}"}
+            = @coupon.username
+        .photo{style:"text-align:center; margin: 10px"}
+          %img{src: @coupon.bigger_photo_url}
+        Coupon code:
+        = @coupon.code
+      - else
+        = @coupon.coupon_type

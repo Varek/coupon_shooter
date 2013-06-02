@@ -3,8 +3,14 @@
 %html
   %head
     %title StartingPoint
-    %link(rel="stylesheet" type="text/css" href="css/foundation.css")
-    -#%link(rel="stylesheet" type="text/css" href="css/app.css")
+    %link(rel="stylesheet" type="text/css" href="/css/foundation.css")
+    -#%link(rel="stylesheet" type="text/css" href="/css/app.css")
 
   %body
+    .row
+      .large-8.columns.large-offset-2
+        .panel
+          %h1 Coupon Shooter
+          %h3 shoot, share, get a Coupon
+
     = yield

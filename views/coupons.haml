@@ -1,3 +1,42 @@
-%ul
-  - @coupons.each do |coupon|
-    %li= coupon.code
+.row
+  .large-8.columns.large-offset-2
+    - @coupons.each do |coupon|
+      .panel
+        - if coupon.photo_id.present?
+          %span
+            %h4{style: 'display:inline'}
+              = "#{coupon.coupon_provider.name}: "
+              = coupon.coupon_type
+            for
+            %a{href:"http://www.eyeem.com/u/#{coupon.username}"}
+              = coupon.username
+          .photo{style:"text-align:center; margin: 10px"}
+            %img{src: coupon.bigger_photo_url}
+          .row
+            .large-10.columns
+              Coupon code:
+              = coupon.code
+            .large-2.columns.last-column
+              %a.button.tiny.secondary{href:"coupons/#{coupon.id}/print"}
+                print it
+        - else
+          = coupon.coupon_type
+          .row
+            .large-10.columns
+              Coupon code:
+              = coupon.code
+
+    .panel
+      %h2 Create new coupon
+      %form{action:"/coupons",method: 'post'}
+        .row
+          .large-12.columns
+            %select.medium{name:'coupon_provider_id'}
+              - CouponProvider.all.each do |cp|
+                %option{value:cp.id}
+                  = cp.name
+            %input{name:'coupon_type', placeholder: 'Coupon type',type:"text"}
+            %input{name:'coupon', placeholder: 'Coupon code',type:"text"}
+            %button Submit
+
+

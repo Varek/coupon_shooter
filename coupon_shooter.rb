@@ -2,12 +2,13 @@ require 'rubygems'
 require 'sinatra'
 require "sinatra/reloader" if development?
 require 'sinatra/activerecord'
+require 'sinatra/partial'
 require 'active_support/all'
 require 'pry-remote'
 require 'EyeEmConnector'
 require 'a2_printer'
 require 'pp'
-require "rmagick"
+require "RMagick"
 include Magick
 
 require './models/coupon'
@@ -19,8 +20,8 @@ EyeEmConnector.configure do |config|
   config.client_secret = ENV['EYEEM_SECRET']
 end
 
-set :public_folder, Proc.new { File.join(root, "tmp") }
-Coupon.tmp_path = settings.public_folder
+set :tmp_folder, Proc.new { File.join(root, "tmp") }
+Coupon.tmp_path = settings.tmp_folder
 
 get '/coupons' do
   @coupons = Coupon.all
@@ -28,16 +29,22 @@ get '/coupons' do
 end
 
 get '/coupons/:id' do
+  @coupon = Coupon.find(params[:id])
   haml :coupon
+end
 
+get '/coupons/:id/print' do
+  coupon = Coupon.find(params[:id])
+  begin
+    coupon.print_photo
+  rescue
+  end
+  redirect "/coupons/#{params[:id]}"
 end
 
 post '/coupons' do
+  Coupon.create(code: params[:coupon_code], coupon_type: params[:coupon_type], coupon_provider_id: params[:coupon_provider_id])
   redirect '/coupons'
-end
-
-get '/coupons/new' do
-  haml :coupons
 end
 
 get '/' do
