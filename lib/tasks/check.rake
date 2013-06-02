@@ -25,8 +25,45 @@ namespace :coupon_shooter do
           printer.justify(:center)
           printer.double_width_on
           printer.set_size(:large)
-          printer.println("Sorry, you can get only one coupon a day.")
-          printer.feed(2)
+          printer.println("Sorry,")
+          printer.println("you can get")
+          printer.println("only one coupon")
+          printer.println("a day.")
+          printer.feed
+          printer.println("But you get")
+          printer.println(" a robot.")
+          printer.double_width_off
+          printer.bold_off
+          printer.justify(:left)
+          printer.feed
+          robot = "             .---.
+           ,' - - `.
+   _ _____/ <q> <p> \\_____ _
+  /_||   ||`-.___.-`||   ||-\\
+ / _||===||         ||===|| _\\
+|- _||===||=========||===||- _|
+\\___||___||_________||___||___/
+ \\\\|///   \\_:_:_:_:_/   \\\\\\|//
+ |   _|    |_______|    |   _|
+ |   _|   /( ===== )\\   |   _|
+ \\\\||//  /\\ `-._.-' /\\  \\\\||//
+  (o )  /_ '._____.' _\\  ( o)
+ /__/ \\ |    _| |_   _| / \\__\\
+ ///\\_/ |_   _| |    _| \\_/\\\\\\
+///\\\\_\\ \\    _/ \\    _/ /_//\\\\\\
+\\\\|//_/ ///|\\\\\\ ///|\\\\\\ \\_\\\\|//
+        \\\\\\|/// \\\\\\|///
+        /-  _\\\\ //   _\\
+        |   _|| ||-  _|
+      ,/\\____|| || ___/\\,
+     /|\\___`\\,| |,/'___/|\\
+     |||`.\\\\ \\\\ // //,'|||
+     \\\\\\\\_//_// \\\\_\\\\_////"
+          printer.println(robot)
+          printer.feed(3)
+          printer.justify(:center)
+          printer.println("for @#{photo['user']['nickname']}")
+          printer.feed(5)
         rescue
           puts 'no printer attached'
         ensure
@@ -43,8 +80,28 @@ namespace :coupon_shooter do
           printer.justify(:center)
           printer.double_width_on
           printer.set_size(:large)
-          printer.println("Sorry, we are out of coupons, come back later.")
-          printer.feed(2)
+          printer.println("Sorry,")
+          printer.println("we are out")
+          printer.println("of coupons,")
+          printer.println("but take a")
+          printer.println(" unicorn.")
+          printer.justify(:left)
+          printer.feed
+          unicorn2 = ' \
+  \ji
+  /.(((
+ (,/"(((__,--.
+     \  ) _( /{
+     !|| " :||
+     !||   :||
+     \'\'\'   \'\'\''
+          printer.println(unicorn2)
+          printer.feed(3)
+          printer.double_width_off
+          printer.bold_off
+          printer.justify(:center)
+          printer.println("for @#{photo['user']['nickname']}")
+          printer.feed(5)
         rescue
           puts 'no printer attached'
         ensure
